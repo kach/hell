@@ -1,0 +1,35 @@
+body {
+	padding: 0px;
+	margin: 0px;
+	font-family: "Helvetica";
+}
+
+canvas {
+	display: block;
+	/*background-color: #eee;*/
+
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+
+	border-bottom-left-radius: 150px;
+	border-bottom-right-radius: 150px;
+
+	border-width: 5px;
+	border-top-width: 0px;
+	border-style: solid;
+}
+
+#pagewrapper {
+	width: 300px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+a {
+	color: #aaa;
+	text-decoration: none;
+}
