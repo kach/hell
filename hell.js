@@ -80,12 +80,18 @@
 		ctx.restore();
 	};
 
-	function TetrisGame(canvas) {
+	function TetrisGame(canvas, nextCanvas) {
 		this.canvas = canvas;
 		this.ctx = canvas.getContext("2d");
 		this.width = canvas.width;
 		this.height = canvas.height;
 		this.mouse = [0, 0];
+
+        this.nextCanvas = nextCanvas;
+        this.nextCtx = nextCanvas.getContext("2d");
+
+        this.nextType = Math.floor(Math.random() * 5);
+        this.next = new Tetromino(this.nextType, [1, 1]);
 
 		this.toRemove = [];
 		this.tetros = [];
@@ -128,7 +134,6 @@
 
 
 
-
 		var myself = this;
 		this.world.on("beginContact", function(evt) {
 			if (evt.bodyA.tetro && evt.bodyB.tetro
@@ -143,14 +148,15 @@
 			var y = evt.clientY - this.offsetTop + document.body.scrollTop;
 			myself.mouse = [x, y];
 
-			var t = new Tetromino(Math.floor(Math.random() * 5), [x - myself.width/2, myself.height - y]);
+			var t = new Tetromino(myself.nextType, [x - myself.width/2, myself.height - y]);
+            myself.nextType = Math.floor(Math.random() * 5);
+            myself.next = new Tetromino(myself.nextType, [1, 1]);
 			myself.tetros.push(t);
 			myself.world.addBody(t.body);
 		});
 
 		RAF(function() {myself.step(); });
 	}
-
 
 
 
@@ -170,8 +176,19 @@
 		this.tetros.forEach(function (t) {
 			t.render(ctx);
 		});
-
 		ctx.restore();
+
+        // clear
+        this.nextCanvas.width = this.nextCanvas.width + 0;
+        // draw upcoming shape
+        var ctx = this.nextCtx;
+		//ctx.save();
+		//ctx.translate(this.width/2, this.height);
+		//ctx.scale(1, -1);
+        ctx.translate(this.nextCanvas.width, 0); //, this.nextCanvas.height);
+        ctx.rotate(90 * Math.PI / 180);
+        this.next.render(ctx);
+        ctx.restore();
 	};
 
 
@@ -197,7 +214,8 @@
 
 	// Start a new game on a new canvas
 	window.addEventListener("load", function () {
-		var can = document.getElementById("world");
-		var game = new TetrisGame(can);
+		var canvas = document.getElementById("world");
+        var next = document.getElementById("next");
+		var game = new TetrisGame(canvas, next);
 	});
 }();

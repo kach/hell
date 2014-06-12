@@ -1,10 +1,12 @@
 body {
 	padding: 0px;
 	margin: 0px;
-	font-family: "Helvetica";
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
-canvas {
+#world {
+    float: left;
+
 	display: block;
 	/*background-color: #eee;*/
 
@@ -15,21 +17,73 @@ canvas {
 	-ms-user-select: none;
 	user-select: none;
 
+	border-width: 5px;
+	border-style: solid;
 	border-bottom-left-radius: 150px;
 	border-bottom-right-radius: 150px;
-
-	border-width: 5px;
 	border-top-width: 0px;
-	border-style: solid;
 }
 
 #pagewrapper {
-	width: 300px;
-	margin-left: auto;
-	margin-right: auto;
+	width: 500px; /* 300 + 40 + 10 + 150 */
+	margin: 0 auto;
 }
+
+#right-col {
+    width: 150px;
+    float: right;
+}
+
+.box {
+	border-width: 2.5px;
+    border-radius: 4px;
+	border-style: solid;
+    margin-bottom: 40px;
+    padding: 18px;
+}
+
+h2, label {
+    margin: 0;
+    font-size: 17.5px;
+    font-weight: 500;
+}
+
+#score, #high-score {
+    display: block;
+    font-weight: 100;
+    font-size: 25px;
+    text-align: right;
+    margin: 0;
+}
+#score {
+    margin-bottom: 20px;
+}
+
+#next {
+    margin-top: 20px;
+}
+
+
 
 a {
 	color: #aaa;
 	text-decoration: none;
 }
+
+
+
+h1 {
+    font-size: 40px;
+    margin: 0.5em 0;
+    font-weight: 500;
+    letter-spacing: -1px;
+    margin-left: -2px;
+}
+
+#footer {
+    clear: both;
+    padding-top: 40px;
+    font-size: 15px;
+    opacity: 0.5;
+}
+

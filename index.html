@@ -8,11 +8,28 @@
 	</head>
 	<body>
 		<div id="pagewrapper">
-			<h1>Hell.</h1>
+      <h1>Hell.</h1>
 
-			<canvas id="world" width=300 height=500></canvas>
+      <div class="row">
+        <canvas id="world" width=300 height=500></canvas>
 
-			<p>Hell is based on <a href="http://xkcd.com/724">this xkcd comic</a>.
+        <div id="right-col">
+          <div class="box">
+            <h2>Next:</h2>
+
+            <canvas id="next" width=82 height=42></canvas>
+          </div>
+
+          <div class="box">
+            <h2>Score:</h2>
+            <p id="score">12345600</p>
+            <h2>Top:</h2>
+            <p id="high-score">0</p>
+          </div>
+        </div>
+      </div>
+
+			<p id="footer">Based on <a href="http://xkcd.com/724">this xkcd comic</a>.
 		</div>
 	</body>
 </html>
